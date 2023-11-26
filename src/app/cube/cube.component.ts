@@ -7,29 +7,19 @@ import * as THREE from "three";
   styleUrls: ['./cube.component.scss']
 })
 export class CubeComponent implements OnInit, AfterViewInit {
-
   @ViewChild('canvas')
   private canvasRef: ElementRef;
 
   //* Cube Properties
-
   @Input() public rotationSpeedX: number = 0.05;
-
   @Input() public rotationSpeedY: number = 0.01;
-
   @Input() public size: number = 200;
-
   @Input() public texture: string = "/assets/texture.jpg";
 
-
   //* Stage Properties
-
   @Input() public cameraZ: number = 400;
-
   @Input() public fieldOfView: number = 1;
-
   @Input('nearClipping') public nearClippingPlane: number = 1;
-
   @Input('farClipping') public farClippingPlane: number = 1000;
 
   //? Helper Properties (Private Properties);
@@ -49,23 +39,12 @@ export class CubeComponent implements OnInit, AfterViewInit {
 
   private scene!: THREE.Scene;
 
-  /**
-   *Animate the cube
-   *
-   * @private
-   * @memberof CubeComponent
-   */
   private animateCube() {
     this.cube.rotation.x += this.rotationSpeedX;
     this.cube.rotation.y += this.rotationSpeedY;
   }
 
-  /**
-   * Create the scene
-   *
-   * @private
-   * @memberof CubeComponent
-   */
+
   private createScene() {
     //* Scene
     this.scene = new THREE.Scene();
@@ -86,12 +65,6 @@ export class CubeComponent implements OnInit, AfterViewInit {
     return this.canvas.clientWidth / this.canvas.clientHeight;
   }
 
-  /**
- * Start the rendering loop
- *
- * @private
- * @memberof CubeComponent
- */
   private startRenderingLoop() {
     //* Renderer
     // Use canvas element in template
@@ -117,5 +90,4 @@ export class CubeComponent implements OnInit, AfterViewInit {
     this.createScene();
     this.startRenderingLoop();
   }
-
 }
